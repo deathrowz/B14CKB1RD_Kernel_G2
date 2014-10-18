@@ -81,6 +81,13 @@ GRTAGS
 GSYMS
 GTAGS
 
+ozip/boot.img
 *.orig
 *~
 \#*#
+*.rej
+scripts/*
+arch/arm/boot/*
+arch/arm/kernel/vmlinux.lds
+usr/*
+out
