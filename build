@@ -1,10 +1,10 @@
 #!/bin/bash
 build=/home/rev3nt3ch/B14CKB1RD/G2/zips/msm8974-zips/
 kernel="B14CKBIRD-Kernel-G2"
-toolchain=/home/rev3nt3ch/B14CKB1RD/G2/toolchains/arm-eabi-4.10-sm/bin
+toolchain=/home/rev3nt3ch/B14CKB1RD/G2/toolchains/linaro-arm-eabi-4.10/bin
 toolchain2="arm-eabi-"
 kerneltype="zImage"
-jobcount="-j$(grep -c ^processor /proc/cpuinfo)"
+jobcount="-j3"
 base=0x00000000
 pagesize=2048
 ramdisk_offset=0x05000000
@@ -12,7 +12,7 @@ tags_offset=0x04800000
 CURRENTDATE=$(date +"%m-%d")
 
 echo "Pick variant..."
-select choice in d800 d801 d802 d803 ls980 vs980 f320 l01f lgl22
+select choice in d800 d801 d802 d803 ls980 vs980 f320 l01f
 do
 case "$choice" in
 	"d800")
@@ -53,10 +53,7 @@ case "$choice" in
 	"l01f")
 		variant="l01f"
 		config="l01f_defconfig"
-		break;;
-	"lgl22")
-		variant="l01f"
-		config="l01f_defconfig"
+#		ramdisk=/home/rev3nt3ch/B14CKB1RD/G2/kernel/B14CKB1RD_Kernel_G2_Ramdisk/ramdisk/f320x.lz4
 		break;;
 esac
 done
@@ -75,12 +72,17 @@ esac
 done
 
 echo "Pick target..."
-select target in aosp
+select target in lg aosp
 do
 case "$target" in
+	"lg")
+		# Already set
+		rdflag=1
+		rom="LG"
+		break;;
 	"aosp")
 		rdflag=2
-		rom="AOSP"
+		rom="LP"
 		ramdisk=/home/rev3nt3ch/B14CKB1RD/G2/kernel/B14CKB1RD_Kernel_G2_Ramdisk/ramdisk_aosp
 		break;;
 esac
