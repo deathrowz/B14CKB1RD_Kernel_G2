@@ -23,11 +23,10 @@ ui_print(" for the LG G2! ");
 ui_print(" ");
 ui_print(" ");
 
-ifelse(is_mounted("/system") == "/system", unmount("/system"));
-ifelse(is_mounted("/cache") == "/cache", unmount("/cache"));
-
 ########################################
 # Mount clean and install kernel files #
+mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "/system");
+mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/userdata", "/data");
 
 ui_print(" > Installing boot                             ");
 package_extract_dir("tmp", "/tmp");
@@ -36,23 +35,18 @@ package_extract_file("boot.img", "/tmp/boot.img");
 set_progress(0.5);
 set_perm_recursive(0, 0, 0755, 0755, "/tmp");
 assert(run_program("/tmp/loki.sh") == 0);
+
 ui_print(" > Installing Modules                          ");
-mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "/system");
 assert(run_program("/tmp/cleaner.sh") == 0);
 delete_recursive("/system/lib/modules");
 package_extract_dir("system", "/system");
 set_perm_recursive(0, 0, 0755, 0644, "/system/lib/modules");
-delete("/tmp/busybox");
+
+ui_print(" > Cleaning up...");
+set_progress(0.7);
 delete("/tmp/loki.sh");
 delete("/tmp/cleaner.sh");
-unmount("/system");
 
-ui_print(" > Mounting filesystems...");
-run_program("/sbin/busybox", "mount", "/data");
-run_program("/sbin/busybox", "mount", "/system");
-
-set_progress(0.7);
-ui_print(" > Deleting old files...");
 delete_recursive("/data/N4UKM", "/data/UKM", "/sdcard/Synapse");
 delete("/system/etc/init.d/N4UKM", "/system/etc/init.d/UKM", "/system/etc/init.d/UKM_WAKE", "/system/xbin/uci");
 
