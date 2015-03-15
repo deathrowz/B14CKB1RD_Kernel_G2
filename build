@@ -1,8 +1,8 @@
 #!/bin/bash
 build=/home/rev3nt3ch/B14CKB1RD/G2/zips/msm8974-zips/
 kernel="B14CKBIRD-Kernel-G2"
-toolchain=/home/rev3nt3ch/B14CKB1RD/G2/toolchains/linaro-arm-eabi-4.10/bin
-toolchain2="arm-eabi-"
+toolchain=/home/rev3nt3ch/B14CKB1RD/G2/toolchains/arm-eabi-4.9-ln/bin
+toolchain2="arm-cortex_a15-linux-gnueabihf-"
 kerneltype="zImage"
 jobcount="-j3"
 base=0x00000000
