@@ -1,6 +1,6 @@
 #!/bin/bash
 build=/home/rev3nt3ch/B14CKB1RD/G2/zips/msm8974-zips/
-kernel="B14CKBIRD-Kernel-G2"
+kernel="B14CKBIRD"
 toolchain=/home/rev3nt3ch/B14CKB1RD/G2/toolchains/arm-eabi-4.9-ln/bin
 toolchain2="arm-cortex_a15-linux-gnueabihf-"
 kerneltype="zImage"
@@ -182,8 +182,8 @@ echo "Kernel BUMP done!";
 
 echo "Zipping..."
 cd ozip
-zip -r ../"$kernel"-"$rom"_"$variant"-$CURRENTDATE-bumped-.zip .
-mv ../"$kernel"-"$rom"_"$variant"-$CURRENTDATE-bumped-.zip $build
+zip -r ../"$kernel"-"$rom"_"$variant"-$CURRENTDATE-bumped.zip .
+mv ../"$kernel"-"$rom"_"$variant"-$CURRENTDATE-bumped.zip $build
 cd ..
 rm -rf /home/rev3nt3ch/B14CKB1RD/G2/out/g2/*
 echo "Done..."
