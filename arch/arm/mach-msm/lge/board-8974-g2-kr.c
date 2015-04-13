@@ -206,7 +206,7 @@ void __init lge_add_lcd_kcal_devices(void)
  */
 /* LGE_CHANGE_S, [WiFi][hayun.kim@lge.com], 2013-01-22, Wifi Bring Up */
 #if defined (CONFIG_BCMDHD) || defined (CONFIG_BCMDHD_MODULE)
-extern void init_bcm_wifi(void);
+//extern void init_bcm_wifi(void);
 #endif
 /* LGE_CHANGE_E, [WiFi][hayun.kim@lge.com], 2013-01-22, Wifi Bring Up */
 
@@ -242,7 +242,7 @@ void __init msm8974_add_drivers(void)
 #endif
 /* LGE_CHANGE_S, [WiFi][hayun.kim@lge.com], 2013-01-22, Wifi Bring Up */
 #if defined (CONFIG_BCMDHD) || defined (CONFIG_BCMDHD_MODULE)
-	init_bcm_wifi();
+//	init_bcm_wifi();
 #endif
 /* LGE_CHANGE_E, [WiFi][hayun.kim@lge.com], 2013-01-22, Wifi Bring Up */
 #if defined(CONFIG_LCD_KCAL)
